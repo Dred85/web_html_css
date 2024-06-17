@@ -1,6 +1,8 @@
+from fileinput import filename
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
+
 from urllib.parse import urlparse, parse_qs
+
 # Для начала определим настройки запуска
 hostName = "localhost"  # Адрес для доступа по сети
 serverPort = 8080  # Порт для доступа по сети
@@ -12,66 +14,17 @@ class MyServer(BaseHTTPRequestHandler):
         обработку входящих запросов от клиентов
     """
 
-    def __get_html_content(self):
-        return """
-        <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-6">
-            <div class="card bg-primary">
-                <div class="card-body text-white">
-                    <h3 class-title>Контактная информация</h3>
-                    <div class="row">
-                        <div class="col-6">Москва</div>
-                        <div class="col-6">+7-777-777-7777</div>
-                        <div class="col-6">Санкт-Петербург</div>
-                        <div class="col-6">+7-888-888-8888</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-body">
-                    <h3 class-title>Оставьте заявку</h3>
-                    <form>
-                        <div class="mb-3">
+    filename = "index.html"
 
-                            <input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="имя"
-                                   aria-describedby="emailHelp">
-                        </div>
-
-                        <div class="mb-3">
-                            <input name="email" type="email" placeholder="email" class="form-control" id="exampleInputPassword1" placeholder="Имя">
-                        </div>
-
-                        <div class="mb-3">
-                            <textarea name="message" class="form-control" placeholder="Сообщение" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary form-control">Отправить</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-</html> """
+    def get_context_data(self):
+        with open(self.filename, "r", encoding="utf-8") as file:
+            context = file.read()
+        return context
 
     def do_GET(self):
         """ Метод для обработки входящих GET-запросов """
         query_components = parse_qs(urlparse(self.path).query)
-        page_content = self.__get_html_content()
+        page_content = self.get_context_data()
         self.send_response(200)  # Отправка кода ответа
         self.send_header("Content-type", "text/html")  # Отправка типа данных, который будет передаваться
         self.end_headers()  # Завершение формирования заголовков ответа
