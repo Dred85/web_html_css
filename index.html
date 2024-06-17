@@ -11,6 +11,11 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <style>
+        .scrollable {
+            height: 300px; /* Высота блока, после которой начнется прокрутка */
+            overflow-y: scroll; /* Добавляет вертикальную прокрутку */
+        }
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -128,6 +133,7 @@
 
 </head>
 <body>
+
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="bootstrap" viewBox="0 0 118 94">
@@ -313,39 +319,80 @@
                 <p class="h2 text center mt-2 mb-2">FAQ</p>
                 <div class="card-body text center">
                     <p class="d-inline-flex gap-1">
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#answere1" role="button"
                            aria-expanded="false" aria-controls="collapseExample">
                             Как купить?
                         </a>
 
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample1" role="button"
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#answere2" role="button"
                            aria-expanded="false" aria-controls="collapseExample">
                             Как доставить?
                         </a>
 
-                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample2" role="button"
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#answere3" role="button"
                            aria-expanded="false" aria-controls="collapseExample">
                             Какая гарантия?
                         </a>
 
                     </p>
-                    <div class="collapse" id="collapseExample">
+                    <div class="collapse" id="answere1">
                         <div class="card card-body">
                             Для приобретения товара перенесите его в корзину
                         </div>
                     </div>
-                    <div class="collapse" id="collapseExample1">
+                    <div class="collapse" id="answere2">
                         <div class="card card-body">
                             Доставка в любое удобное время
                         </div>
                     </div>
-                    <div class="collapse" id="collapseExample2">
+                    <div class="collapse" id="answere3">
                         <div class="card card-body">
                             Гарантия на все товары 1 год
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">номер</th>
+                    <th scope="col">название товара</th>
+                    <th scope="col">цена за штуку, ₽</th>
+                    <th scope="col">количество</th>
+                    <th scope="col">итоговая сумма</th>
+                    <th scope="col">статус заказа</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>смартфон apple iphone 15 128 гб</td>
+                    <td>83 999</td>
+                    <td>1</td>
+                    <td>83 999</td>
+                    <td>оформлен</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>МФУ лазерное Kyocera ECOSYS M2040dn</td>
+                    <td>84 299</td>
+                    <td>1</td>
+                    <td>84 299</td>
+                    <td>оформлен</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>27" Монитор LG UltraGear 27GN800-B черный</td>
+                    <td>27 399</td>
+                    <td>7</td>
+                    <td>0</td>
+                    <td>отменен</td>
+                </tr>
+
+
+                </tbody>
+            </table>
 
         </div>
     </div>
