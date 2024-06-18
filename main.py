@@ -1,7 +1,4 @@
-from fileinput import filename
 from http.server import BaseHTTPRequestHandler, HTTPServer
-
-from urllib.parse import urlparse, parse_qs
 
 # Для начала определим настройки запуска
 hostName = "localhost"  # Адрес для доступа по сети
@@ -23,7 +20,6 @@ class MyServer(BaseHTTPRequestHandler):
 
     def do_GET(self):
         """ Метод для обработки входящих GET-запросов """
-        query_components = parse_qs(urlparse(self.path).query)
         page_content = self.get_context_data()
         self.send_response(200)  # Отправка кода ответа
         self.send_header("Content-type", "text/html")  # Отправка типа данных, который будет передаваться
